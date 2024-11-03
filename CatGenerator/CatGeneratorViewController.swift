@@ -8,7 +8,7 @@
 import UIKit
 
 final class CatGeneratorViewController: UIViewController {
-
+    
     @IBOutlet weak var textView: UITextField!
     @IBOutlet weak var textLabel: UILabel!
     @IBOutlet weak var scrollView: UIScrollView!
@@ -17,7 +17,7 @@ final class CatGeneratorViewController: UIViewController {
     
     @IBOutlet weak var generateButton: UIButton!
     private let statusLabelTemplate = "Status: "
-    
+        
     override func viewDidLoad() {
         super.viewDidLoad()
         if catImageView.image == nil {
@@ -25,8 +25,21 @@ final class CatGeneratorViewController: UIViewController {
         }
         let gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(didTapView))
         view.addGestureRecognizer(gestureRecognizer)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(notification:)), name: UIResponder.keyboardWillShowNotification , object:nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(notification:)), name: UIResponder.keyboardWillHideNotification , object:nil)
+    }
+    @objc func keyboardWillShow(notification: NSNotification) {
+        let keyboardHeight = (notification.userInfo![UIResponder.keyboardFrameEndUserInfoKey] as! NSValue).cgRectValue.height
+        
+        scrollView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: keyboardHeight / 2, right: 0)
     }
     
+    @objc func keyboardWillHide(notification: NSNotification) {
+        _ = (notification.userInfo![UIResponder.keyboardFrameEndUserInfoKey] as! NSValue).cgRectValue.height
+        
+        scrollView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+    }
     @objc
     private func didTapView() {
         view.endEditing(true)
@@ -55,7 +68,7 @@ final class CatGeneratorViewController: UIViewController {
             generateButton.isEnabled = true
             return
         }
-
+        
         let task = URLSession.shared.dataTask(with: url) { [weak self] data, response, error in
             guard let self = self else { return }
             
@@ -81,5 +94,5 @@ final class CatGeneratorViewController: UIViewController {
         }
         task.resume()
     }
-
+    
 }
