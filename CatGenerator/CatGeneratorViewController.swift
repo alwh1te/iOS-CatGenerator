@@ -25,6 +25,11 @@ final class CatGeneratorViewController: UIViewController {
     }
     
     @IBAction func didTapGenerateButton(_ sender: Any) {
+        if let tabBarVC = self.tabBarController as? MainTabBarController {
+            print(tabBarVC.savedCatImages.count)
+        } else {
+            print("error")
+        }
         downloadCat()
     }
     
@@ -41,7 +46,6 @@ final class CatGeneratorViewController: UIViewController {
         let task = URLSession.shared.dataTask(with: url) { [weak self] data, response, error in
             guard let self = self else { return }
             
-            
             guard let data = data else {
                 DispatchQueue.main.async {
                     self.statusLabel.text = self.statusLabelTemplate + "No data"
@@ -51,11 +55,18 @@ final class CatGeneratorViewController: UIViewController {
             }
             
             DispatchQueue.main.async {
-                self.catImageView.image = UIImage(data: data)
-                self.statusLabel.text = self.statusLabelTemplate + "Download Finished"
-                self.generateButton.isEnabled = true
+                if let image = UIImage(data: data) {
+                    self.catImageView.image = image
+                    self.statusLabel.text = self.statusLabelTemplate + "Download Finished"
+                    self.generateButton.isEnabled = true
+                    
+                    if let tabBarVC = self.tabBarController as? MainTabBarController {
+                        tabBarVC.savedCatImages.append(image)
+                    }
+                }
             }
         }
         task.resume()
     }
+
 }

@@ -72,31 +72,73 @@
         <!--Cats Colletion View Controller-->
         <scene sceneID="9d3-T7-dQ0">
             <objects>
-                <viewController id="yMI-9o-z0e" userLabel="Cats Colletion View Controller" sceneMemberID="viewController">
+                <viewController id="yMI-9o-z0e" userLabel="Cats Colletion View Controller" customClass="CatCollectionViewController" customModule="CatGenerator" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="7k5-ZV-cHb">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="wDK-1z-Yvg">
-                                <rect key="frame" x="20" y="114" width="353" height="636"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="T8z-8H-Mrc">
+                                <rect key="frame" x="20" y="153" width="353" height="596"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="CatCell" id="2xH-pl-qLO" customClass="CatTableViewCell" customModule="CatGenerator" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="50" width="353" height="43.666667938232422"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="2xH-pl-qLO" id="adm-hC-q3C">
+                                            <rect key="frame" x="0.0" y="0.0" width="353" height="43.666667938232422"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
                             </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="R15-dF-BVY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="wDK-1z-Yvg" firstAttribute="top" secondItem="R15-dF-BVY" secondAttribute="top" constant="11" id="IHf-Ie-M28"/>
-                            <constraint firstItem="wDK-1z-Yvg" firstAttribute="leading" secondItem="R15-dF-BVY" secondAttribute="leading" constant="20" id="Rbs-a1-q3c"/>
-                            <constraint firstItem="R15-dF-BVY" firstAttribute="trailing" secondItem="wDK-1z-Yvg" secondAttribute="trailing" constant="20" id="s4f-bJ-O0q"/>
-                            <constraint firstItem="R15-dF-BVY" firstAttribute="bottom" secondItem="wDK-1z-Yvg" secondAttribute="bottom" constant="19" id="w6D-fo-flG"/>
+                            <constraint firstItem="R15-dF-BVY" firstAttribute="trailing" secondItem="T8z-8H-Mrc" secondAttribute="trailing" constant="20" id="36A-zt-6Mp"/>
+                            <constraint firstItem="T8z-8H-Mrc" firstAttribute="leading" secondItem="R15-dF-BVY" secondAttribute="leading" constant="20" id="GR6-lo-vtH"/>
+                            <constraint firstItem="T8z-8H-Mrc" firstAttribute="top" secondItem="R15-dF-BVY" secondAttribute="top" constant="50" id="f6e-Ql-eb1"/>
+                            <constraint firstItem="R15-dF-BVY" firstAttribute="bottom" secondItem="T8z-8H-Mrc" secondAttribute="bottom" constant="20" id="gJW-fi-C1Z"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="My cats" image="folder" catalog="system" selectedImage="folder.fill" id="76R-c4-xBj"/>
                     <navigationItem key="navigationItem" id="ihW-yK-CZU"/>
+                    <connections>
+                        <outlet property="tableView" destination="T8z-8H-Mrc" id="my2-pu-dgf"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ycq-VH-OWI" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2803.8167938931297" y="-28.169014084507044"/>
+        </scene>
+        <!--CatDetailViewController-->
+        <scene sceneID="RAz-cx-owz">
+            <objects>
+                <viewController storyboardIdentifier="CatDetailViewController" id="aOg-xB-b9U" userLabel="CatDetailViewController" customClass="CatDetailViewController" customModule="CatGenerator" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="uZL-VA-Mbq">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="x1Z-k8-4iJ">
+                                <rect key="frame" x="30" y="89" width="333" height="699"/>
+                            </imageView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="bnm-3S-ocu"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="x1Z-k8-4iJ" firstAttribute="top" secondItem="bnm-3S-ocu" secondAttribute="top" constant="30" id="5kg-DH-2T2"/>
+                            <constraint firstItem="x1Z-k8-4iJ" firstAttribute="leading" secondItem="bnm-3S-ocu" secondAttribute="leading" constant="30" id="6c5-bg-Dp5"/>
+                            <constraint firstItem="bnm-3S-ocu" firstAttribute="bottom" secondItem="x1Z-k8-4iJ" secondAttribute="bottom" constant="30" id="nuU-iv-87F"/>
+                            <constraint firstItem="bnm-3S-ocu" firstAttribute="trailing" secondItem="x1Z-k8-4iJ" secondAttribute="trailing" constant="30" id="u46-R4-pqM"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="catImageView" destination="x1Z-k8-4iJ" id="02g-bZ-2h4"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="sfg-NY-TJ0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2818" y="624"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="eAj-Cg-K93">
@@ -116,10 +158,10 @@
             </objects>
             <point key="canvasLocation" x="75.572519083969468" y="-28.169014084507044"/>
         </scene>
-        <!--Tab Bar Controller-->
+        <!--Main Tab Bar Controller-->
         <scene sceneID="c4N-WL-ofj">
             <objects>
-                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="g5F-41-a8E" sceneMemberID="viewController">
+                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="g5F-41-a8E" customClass="MainTabBarController" customModule="CatGenerator" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="RIb-Si-MBF"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="G0c-xK-PJP">
