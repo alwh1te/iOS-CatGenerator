@@ -17,7 +17,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cat Generator" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QGo-Xy-0nY">
-                                <rect key="frame" x="111" y="201" width="170" height="34"/>
+                                <rect key="frame" x="20" y="201" width="353" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="28"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -33,11 +33,11 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="qTH-80-Jfi" secondAttribute="trailing" constant="70" id="1at-TD-dcC"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="QGo-Xy-0nY" secondAttribute="trailing" constant="112" id="WdG-Z4-QB7"/>
-                            <constraint firstItem="qTH-80-Jfi" firstAttribute="top" secondItem="QGo-Xy-0nY" secondAttribute="bottom" constant="37" id="ffo-Mq-s3Y"/>
-                            <constraint firstItem="QGo-Xy-0nY" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="142" id="fhO-ca-h2Q"/>
+                            <constraint firstItem="QGo-Xy-0nY" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="D0A-7T-AE0"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="QGo-Xy-0nY" secondAttribute="trailing" constant="20" id="QyC-Et-Lz7"/>
+                            <constraint firstItem="QGo-Xy-0nY" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="142" id="XV6-mH-GOD"/>
                             <constraint firstItem="qTH-80-Jfi" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="111" id="mtZ-Qp-8IZ"/>
-                            <constraint firstItem="QGo-Xy-0nY" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="111" id="nE9-kU-evC"/>
+                            <constraint firstItem="qTH-80-Jfi" firstAttribute="top" secondItem="QGo-Xy-0nY" secondAttribute="bottom" constant="37" id="o2f-yA-maN"/>
                         </constraints>
                     </view>
                 </viewController>
