@@ -7,18 +7,21 @@
 
 import UIKit
 
-class CatGeneratorViewController: UIViewController {
+final class CatGeneratorViewController: UIViewController {
 
     @IBOutlet weak var textLabel: UILabel!
     @IBOutlet weak var scrollView: UIScrollView!
-    private var imgData: Data?
-
     @IBOutlet weak var catImageView: UIImageView!
+    @IBOutlet weak var statusLabel: UILabel!
+    
+    @IBOutlet weak var generateButton: UIButton!
+    private let statusLabelTemplate = "Status: "
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        if catImageView.image == nil {
+            downloadCat()
+        }
     }
     
     @IBAction func didTapGenerateButton(_ sender: Any) {
@@ -26,31 +29,33 @@ class CatGeneratorViewController: UIViewController {
     }
     
     private func downloadCat() {
+        generateButton.isEnabled = false
+        statusLabel.text = statusLabelTemplate + "Downloading..."
+        
         guard let url = URL(string: "https://cataas.com/cat") else {
+            statusLabel.text = statusLabelTemplate + "Invalid URL"
+            generateButton.isEnabled = true
             return
         }
-        
+
         let task = URLSession.shared.dataTask(with: url) { [weak self] data, response, error in
+            guard let self = self else { return }
+            
+            
             guard let data = data else {
+                DispatchQueue.main.async {
+                    self.statusLabel.text = self.statusLabelTemplate + "No data"
+                    self.generateButton.isEnabled = true
+                }
                 return
             }
             
-            DispatchQueue.main.async { [weak self] in
-//                self?.imgData = data
-                self?.catImageView.image = UIImage(data: data)
+            DispatchQueue.main.async {
+                self.catImageView.image = UIImage(data: data)
+                self.statusLabel.text = self.statusLabelTemplate + "Download Finished"
+                self.generateButton.isEnabled = true
             }
         }
-        
         task.resume()
     }
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

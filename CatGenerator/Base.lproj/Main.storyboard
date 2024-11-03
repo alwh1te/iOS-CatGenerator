@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="23094" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="23094" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="pTw-z7-lOA">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23084"/>
@@ -8,7 +8,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Cat Generator View Controller-->
+        <!--Cat Generator-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="CatGeneratorViewController" customModule="CatGenerator" customModuleProvider="target" sceneMemberID="viewController">
@@ -16,16 +16,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="jr0-5b-Cle">
-                                <rect key="frame" x="30" y="109" width="333" height="300"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="300" id="zgB-gi-Xlp"/>
-                                </constraints>
-                            </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Q2-U1-qTe">
-                                <rect key="frame" x="30" y="531" width="333" height="35"/>
+                                <rect key="frame" x="30" y="575" width="333" height="35"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Generate a cat">
+                                <buttonConfiguration key="configuration" style="plain" title="Generate a new cat">
                                     <backgroundConfiguration key="background">
                                         <color key="backgroundColor" systemColor="labelColor"/>
                                     </backgroundConfiguration>
@@ -35,28 +29,119 @@
                                     <action selector="didTapGenerateButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="fWK-g3-jx5"/>
                                 </connections>
                             </button>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="jr0-5b-Cle">
+                                <rect key="frame" x="30" y="153" width="333" height="300"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="300" id="zgB-gi-Xlp"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.5" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Status: " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t1S-iK-aZH">
+                                <rect key="frame" x="50" y="500" width="293" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="8Q2-U1-qTe" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="30" id="05G-nW-RON"/>
+                            <constraint firstItem="t1S-iK-aZH" firstAttribute="top" secondItem="jr0-5b-Cle" secondAttribute="bottom" constant="47" id="5uE-Or-rxd"/>
                             <constraint firstItem="jr0-5b-Cle" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="30" id="6Zm-5Q-fxg"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="t1S-iK-aZH" secondAttribute="trailing" constant="50" id="GGF-qE-fnf"/>
                             <constraint firstItem="8Q2-U1-qTe" firstAttribute="top" secondItem="jr0-5b-Cle" secondAttribute="bottom" constant="122" id="Yrk-oU-uoO"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="jr0-5b-Cle" secondAttribute="trailing" constant="30" id="Yx9-hk-09B"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="8Q2-U1-qTe" secondAttribute="trailing" constant="30" id="bds-fT-YaG"/>
                             <constraint firstItem="jr0-5b-Cle" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="50" id="qiB-zM-Re8"/>
+                            <constraint firstItem="t1S-iK-aZH" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="50" id="yvf-HE-v9c"/>
+                            <constraint firstItem="8Q2-U1-qTe" firstAttribute="top" secondItem="t1S-iK-aZH" secondAttribute="bottom" constant="54" id="ziI-CF-Ntv"/>
                         </constraints>
                     </view>
+                    <tabBarItem key="tabBarItem" title="Cat Generator" image="cat" catalog="system" selectedImage="cat.fill" id="SAy-N4-5D8"/>
+                    <navigationItem key="navigationItem" id="nzM-FU-elq"/>
                     <connections>
                         <outlet property="catImageView" destination="jr0-5b-Cle" id="6kt-xs-yAX"/>
+                        <outlet property="generateButton" destination="8Q2-U1-qTe" id="DiF-gz-qKq"/>
+                        <outlet property="statusLabel" destination="t1S-iK-aZH" id="BvZ-hk-O3g"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="1929.0076335877861" y="-28.169014084507044"/>
+        </scene>
+        <!--Cats Colletion View Controller-->
+        <scene sceneID="9d3-T7-dQ0">
+            <objects>
+                <viewController id="yMI-9o-z0e" userLabel="Cats Colletion View Controller" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="7k5-ZV-cHb">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="wDK-1z-Yvg">
+                                <rect key="frame" x="20" y="114" width="353" height="636"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </tableView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="R15-dF-BVY"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="wDK-1z-Yvg" firstAttribute="top" secondItem="R15-dF-BVY" secondAttribute="top" constant="11" id="IHf-Ie-M28"/>
+                            <constraint firstItem="wDK-1z-Yvg" firstAttribute="leading" secondItem="R15-dF-BVY" secondAttribute="leading" constant="20" id="Rbs-a1-q3c"/>
+                            <constraint firstItem="R15-dF-BVY" firstAttribute="trailing" secondItem="wDK-1z-Yvg" secondAttribute="trailing" constant="20" id="s4f-bJ-O0q"/>
+                            <constraint firstItem="R15-dF-BVY" firstAttribute="bottom" secondItem="wDK-1z-Yvg" secondAttribute="bottom" constant="19" id="w6D-fo-flG"/>
+                        </constraints>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="My cats" image="folder" catalog="system" selectedImage="folder.fill" id="76R-c4-xBj"/>
+                    <navigationItem key="navigationItem" id="ihW-yK-CZU"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ycq-VH-OWI" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2803.8167938931297" y="-28.169014084507044"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="eAj-Cg-K93">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="pTw-z7-lOA" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Cqx-qe-otH">
+                        <rect key="frame" x="0.0" y="59" width="393" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="g5F-41-a8E" kind="relationship" relationship="rootViewController" id="Jvz-nZ-hv0"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="P2x-ZI-btz" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
             <point key="canvasLocation" x="75.572519083969468" y="-28.169014084507044"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="c4N-WL-ofj">
+            <objects>
+                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="g5F-41-a8E" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" id="RIb-Si-MBF"/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="G0c-xK-PJP">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="viewControllers" id="Edn-GE-uPs"/>
+                        <segue destination="yMI-9o-z0e" kind="relationship" relationship="viewControllers" id="go5-jy-oSx"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="YqN-Bi-k3k" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1002.2900763358779" y="-28.169014084507044"/>
         </scene>
     </scenes>
     <resources>
+        <image name="cat" catalog="system" width="128" height="102"/>
+        <image name="cat.fill" catalog="system" width="128" height="102"/>
+        <image name="folder" catalog="system" width="128" height="96"/>
+        <image name="folder.fill" catalog="system" width="128" height="96"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
