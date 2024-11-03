@@ -9,6 +9,7 @@ import UIKit
 
 final class CatGeneratorViewController: UIViewController {
 
+    @IBOutlet weak var textView: UITextField!
     @IBOutlet weak var textLabel: UILabel!
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var catImageView: UIImageView!
@@ -22,6 +23,13 @@ final class CatGeneratorViewController: UIViewController {
         if catImageView.image == nil {
             downloadCat()
         }
+        let gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(didTapView))
+        view.addGestureRecognizer(gestureRecognizer)
+    }
+    
+    @objc
+    private func didTapView() {
+        view.endEditing(true)
     }
     
     @IBAction func didTapGenerateButton(_ sender: Any) {
@@ -36,8 +44,13 @@ final class CatGeneratorViewController: UIViewController {
     private func downloadCat() {
         generateButton.isEnabled = false
         statusLabel.text = statusLabelTemplate + "Downloading..."
-        
-        guard let url = URL(string: "https://cataas.com/cat") else {
+        var url_template : String;
+        if let text = textView.text, !text.isEmpty {
+            url_template = "https://cataas.com/cat/says/\(text)?fontSize=50&fontColor=white"
+        } else {
+            url_template = "https://cataas.com/cat"
+        }
+        guard let url = URL(string: url_template) else {
             statusLabel.text = statusLabelTemplate + "Invalid URL"
             generateButton.isEnabled = true
             return
